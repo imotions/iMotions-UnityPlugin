@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.XR;
+#if VIVE_OPENXR
 using VIVE.OpenXR;
 using VIVE.OpenXR.EyeTracker;
-
+#endif
 namespace Coflow.iMotionsPlugin.Vive
 {
     public class EyeGazeConverter_Vive : EyeGazeConverter
     {
-
+#if VIVE_OPENXR
         protected override void Update()
         {
             XR_HTC_eye_tracker.Interop.GetEyeGazeData(out XrSingleEyeGazeDataHTC[] out_gazes);
@@ -81,5 +82,6 @@ namespace Coflow.iMotionsPlugin.Vive
 
 
         }
+#endif
     }
 }
