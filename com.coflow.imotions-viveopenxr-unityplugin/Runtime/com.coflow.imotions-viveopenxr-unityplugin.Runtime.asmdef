@@ -1,0 +1,19 @@
+{
+    "name": "com.coflow.imotions-viveopenxr-unityplugin.Runtime",
+    "rootNamespace": "Coflow.iMotionsPlugin.Vive",
+    "references": [
+        "Unity.TextMeshPro",
+        "Unity.InputSystem",
+        "VIVE.OpenXR",
+        "RenderHeads.AVProMovieCapture.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
