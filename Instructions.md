@@ -1,11 +1,6 @@
 - Import plugin via git url.
-- Go to top left menu: "VIVE/OpenXR Installer/Install or Update latest version" to install VIVE OpenXR SDK.
 - Go to top left menu: "Edit/Project Settings".
-- Navigate to "XR Plug-in Management" and check ONLY the following boxes: "OpenXR" and "OpenXR/VIVE XR Support feature group".
-- Under XR Plug-in Management, there will be an OpenXR option, inside OpenXR, make sure under "Enabled Interaction Profiles" there is an entry called "VIVE Focus 3 Controller Interaction" added.
+- Navigate to "XR Plug-in Management" and check ONLY the following boxes: "OpenXR" and "OpenXR/Meta XR feature group".
+- Under XR Plug-in Management, there will be an OpenXR option, inside OpenXR, make sure under "Enabled Interaction Profiles" there is an entry called "Meta Quest Touch Pro Controller Profile" added.
 - Still inside OpenXR option, below the above step, in OpenXR Feature Groups, Check the following boxes:
-	- VIVE XR Support
-	- Inside "All Features" enable the following boxes:
-		- "VIVE XR Eye tracker"
-		- "VIVE XR Passthrough"
-		- "VIVE XR Support"
+	- Meta XR

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace Coflow.iMotionsPlugin.Vive
+namespace Coflow.iMotionsPlugin.Meta
 {
+
     public class EyetrackingDataRetriever : MonoBehaviour
     {
         [Header("Events:")]

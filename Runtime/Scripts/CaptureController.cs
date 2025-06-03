@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using RenderHeads.Media.AVProMovieCapture;
 
-namespace Coflow.iMotionsPlugin.Vive
+namespace Coflow.iMotionsPlugin.Meta
 {
+
     public class CaptureController : MonoBehaviour
     {
         CaptureFromCamera captureComp;

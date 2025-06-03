@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Coflow.iMotionsPlugin.Vive
+namespace Coflow.iMotionsPlugin.Meta
 {
     public class EyeGazeConverter : MonoBehaviour
     {

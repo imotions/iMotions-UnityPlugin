@@ -1,27 +1,20 @@
 {
-  "name": "com.coflow.imotions-viveopenxr-unityplugin",
-  "version": "1.0.1",
-  "displayName": "iMotions Vive Plugin",
-  "description": "This package will help you use vive's eyetracking data and export it in a way imotions software can read.",
+  "name": "com.coflow.imotions-metaquestpro-unityplugin",
+  "version": "1.0.0",
+  "displayName": "iMotions Meta Plugin",
+  "description": "This package will help you use meta's quest pro eyetracking data and export it in a way imotions software can read.",
   "unity": "2022.3",
   "unityRelease": "40f1",
   "documentationUrl": "https://example.com/",
   "changelogUrl": "https://example.com/changelog.html",
   "licensesUrl": "https://example.com/licensing.html",
   "dependencies": {
-    "com.unity.inputsystem": "1.7.0",
-    "com.unity.xr.management": "4.2.1",
-    "com.unity.xr.interaction.toolkit": "2.5.4"
+    "com.unity.xr.management": "4.4.0",
+    "com.unity.xr.interaction.toolkit": "2.5.4",
+    "com.unity.inputsystem": "1.7.0"
   },
-  "samples": [
-    {
-      "displayName": "Vive EyeTracking Data Export Example",
-      "description": "Contains sample scene with vive eye tracking and video recording to export iMotions-ready files",
-      "path": "Samples~/SamplesViveEyetracking"
-    }
-  ],
   "keywords": [
-    "vive",
+    "meta quest pro",
     "eyetracking",
     "imotions"
   ],

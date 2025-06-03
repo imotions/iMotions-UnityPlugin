@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Coflow.iMotionsPlugin.Vive
+namespace Coflow.iMotionsPlugin.Meta
 {
+
     [CreateAssetMenu(fileName = "GameEvent", menuName = "Event/New GameEvent", order = 1)]
     public class GameEvent : ScriptableObject
     {

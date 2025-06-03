@@ -4,16 +4,14 @@ This package, `com.coflow.imotions-viveopenxr-unityplugin`, includes or depends 
 
 ---
 
-## 1. VIVE OpenXR Plugin
+## 1. Meta XR All-in-One SDK
 
-**Name**: VIVE OpenXR Plugin  
-**Source**: https://github.com/ViveSoftware/VIVE-OpenXR-Unity
-**License**: https://developer.vive.com/resources/downloads/licenses-and-agreements/
+**Name**: Meta XR All-in-One SDK 
+**Source**: https://assetstore.unity.com/packages/tools/integration/meta-xr-all-in-one-sdk-269657?srsltid=AfmBOoo4CVQVL-RJBQZzSh1wijIHAmIv0zGBGtYJWwb7aEiAuNh_YQoI
+**License**: https://developer.oculus.com/licenses/oculussdk
 **Copyright**
 ```
-Copyright © HTC Corporation, LLC and its affiliates. All rights reserved.
-
-Your use of this SDK, sample, or tool is subject to HTC VIVE SDK License Agreement, available at https://developer.vive.com/resources/downloads/licenses-and-agreements/
+https://developer.oculus.com/licenses/oculussdk
 ```
 
 ---
@@ -39,5 +37,5 @@ https://renderheads.com/product/avpro-movie-capture/
 
 ## Disclaimer
 
-The authors of this package are not affiliated with HTC or RenderHeads Ltd.  
+The authors of this package are not affiliated with Meta or RenderHeads Ltd.  
 All third-party software remains the property of their respective owners and is subject to their own license terms.

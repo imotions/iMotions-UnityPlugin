@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Coflow.iMotionsPlugin.Vive
+namespace Coflow.iMotionsPlugin.Meta
 {
     public class GameEventListener : MonoBehaviour
     {

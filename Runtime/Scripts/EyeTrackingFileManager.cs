@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 using System;
 
-namespace Coflow.iMotionsPlugin.Vive
+namespace Coflow.iMotionsPlugin.Meta
 {
     public class EyeTrackingFileManager : MonoBehaviour
     {

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-namespace Coflow.iMotionsPlugin.Vive
+namespace Coflow.iMotionsPlugin.Meta
 {
+
     [CreateAssetMenu(fileName = "GameEvent_EyeTrackingData", menuName = "Event/New GameEvent EyeTrackingData", order = 1)]
     public class GameEvent_EyeTrackingData : ScriptableObject
     {

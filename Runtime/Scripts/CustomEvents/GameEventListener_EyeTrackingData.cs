@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Coflow.iMotionsPlugin.Vive
+namespace Coflow.iMotionsPlugin.Meta
 {
     public class GameEventListener_EyeTrackingData : MonoBehaviour
     {
@@ -25,6 +25,7 @@ namespace Coflow.iMotionsPlugin.Vive
             Response.Invoke(s);
         }
     }
+
 
     [System.Serializable]
     public class UnityEvent_EyeTracking : UnityEvent<EyeTrackingData>

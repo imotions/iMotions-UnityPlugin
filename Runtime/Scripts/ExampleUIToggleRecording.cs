@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Coflow.iMotionsPlugin.Vive
+namespace Coflow.iMotionsPlugin.Meta
 {
-
     public class ExampleUIToggleRecording : MonoBehaviour
     {
         UnityiMotionsManager manager;
