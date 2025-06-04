@@ -19,20 +19,9 @@ storage/Android/data/<your.app.package.name>/files/imotions/
 
 > 📌 Note: This location is accessible via `adb pull` or through device file explorers with proper permissions.
 
-## 📦 Installation
+## 📦 Installation and Usage
 
-1. Ensure your Unity project uses:
-   - Unity **2022.3.x** or later
-2. Import this plugin via Git or Unity Package Manager.
-   - **AVPro Movie Capture** (Free Trial allowed and included in the package)
-
-## 🧰 Usage
-
-1. Add the plugin to your Unity project.
-2. Ensure your project is configured for Meta OpenXR.
-3. Drag the "iMotions-Systems-Meta" prefab from the package/Runtime/Prefabs to your scene.
-4. Build to an Android device with eye tracking support.
-5. Run the app — use the input method you defined (controller input or UI buttons) and data will be captured and stored automatically in the `/files/imotions/` directory.
+Follow the iMotions-Unity-Plugin_vMeta Doc for step by step process.
 
 ## 📝 Licensing
 
