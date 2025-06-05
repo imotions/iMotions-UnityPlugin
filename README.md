@@ -1,3 +1,3 @@
 # WFVR-iMotionsUnityPlugin
 
-Test repo please ignore
+Repo for the iMotionsUnityPlugin project
