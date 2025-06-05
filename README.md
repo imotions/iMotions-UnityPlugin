@@ -21,6 +21,13 @@ storage/Android/data/<your.app.package.name>/files/imotions/
 
 ## 📦 Installation and Usage
 
+- Unity version 2022.3 or higher (fully tested on 2022.3.40f1)
+- Build settings platform set to Android
+- Inside Unity go to: "Window/Package Manager"
+- Click the "+" sign on top left upper corner
+- Then "Add package from git URL"
+- Paste "https://github.com/imotions/iMotions-UnityPlugin.git#meta"
+
 Follow the iMotions-Unity-Plugin_vMeta Doc for step by step process.
 
 ## 📝 Licensing
