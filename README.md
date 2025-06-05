@@ -26,10 +26,3 @@ Follow the iMotions-Unity-Plugin_vMeta Doc for step by step process.
 ## 📝 Licensing
 
 This plugin includes third-party components. See [`Third Party Notices.md`](./Third%20Party%20Notices.md) for license details.
-
----
-
-### 🧑‍💻 Author
-
-**CoFlowVisuals**  
-For support or collaboration, please contact: https://www.coflowvisuals.com/  contact@coflowvisuals.com
