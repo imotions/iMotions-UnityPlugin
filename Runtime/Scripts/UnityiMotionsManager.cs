@@ -8,8 +8,7 @@ namespace Coflow.iMotionsPlugin.Vive
     public class UnityiMotionsManager : MonoBehaviour
     {
         [Header("Video Capture Resolution Settings:")]
-        [SerializeField] private int width;
-        [SerializeField] private int height;
+        [SerializeField] private SupportedResolutions resolution = SupportedResolutions._1080;
 
         [Header("In case you want to use UI buttons instead of controller input:\n\nCall StartRecording()/StopRecording()\nand EnablePassthrough()/DisablePassthrough()\nthrough an onclick UI event.")]
         [Header("Input references for Toggling Video capture and Passthrough:")]
@@ -36,8 +35,8 @@ namespace Coflow.iMotionsPlugin.Vive
 
         private void Start()
         {
-            captureController.SetupResolution(width, height);
-            eyetrackingDataRetriever.SetupResolution(width, height);
+            captureController.SetupResolution(ResolutionUtils.GetResolution(resolution).x, ResolutionUtils.GetResolution(resolution).y);
+            eyetrackingDataRetriever.SetupResolution(ResolutionUtils.GetResolution(resolution).x, ResolutionUtils.GetResolution(resolution).y);
         }
 
         private void OnEnable()
@@ -100,8 +99,8 @@ namespace Coflow.iMotionsPlugin.Vive
 
         public void StartRecording()
         {
-            captureController.SetOutputPath(eyetrackingManager.GetSubFolderPath());
             eyetrackingManager.SetUpPath();
+            captureController.SetOutputPath(eyetrackingManager.GetSubFolderPath());
             eyetrackingDataRetriever.StartRecording();
 
             Debug.Log("#Start Recording");
@@ -129,4 +128,37 @@ namespace Coflow.iMotionsPlugin.Vive
         }
     }
 
+}
+
+public enum SupportedResolutions
+{
+    _512,
+    _720,
+    _1080,
+    _1440,
+    _2048,
+    _2160,
+    _2880,
+    _3072,
+    _4096
+}
+
+public static class ResolutionUtils
+{
+    public static Vector2Int GetResolution(SupportedResolutions res)
+    {
+        switch (res)
+        {
+            case SupportedResolutions._512: return new Vector2Int(512, 512);
+            case SupportedResolutions._720: return new Vector2Int(720, 720);
+            case SupportedResolutions._1080: return new Vector2Int(1080, 1080);
+            case SupportedResolutions._1440: return new Vector2Int(1440, 1440);
+            case SupportedResolutions._2048: return new Vector2Int(2048, 2048);
+            case SupportedResolutions._2160: return new Vector2Int(2160, 2160);
+            case SupportedResolutions._2880: return new Vector2Int(2880, 2880);
+            case SupportedResolutions._3072: return new Vector2Int(3072, 3072);
+            case SupportedResolutions._4096: return new Vector2Int(4096, 4096);
+            default: return new Vector2Int(1080, 1080); // fallback
+        }
+    }
 }

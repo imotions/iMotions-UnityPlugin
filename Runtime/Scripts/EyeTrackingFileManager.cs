@@ -9,6 +9,7 @@ namespace Coflow.iMotionsPlugin.Vive
     public class EyeTrackingFileManager : MonoBehaviour
     {
         private const string directoryName = "iMotions";
+        private const string subDirectoryName = "Study-Files";
         private const string fileName = "EyeTrackingDataFile";
 
         [Header("Events:")]
@@ -22,11 +23,12 @@ namespace Coflow.iMotionsPlugin.Vive
         private bool startRecording;
 
         string fullPath;
+        string subFolderPath;
         const string fileExtension = ".csv";
 
         public string GetSubFolderPath()
         {
-            return Application.persistentDataPath + "/" + directoryName;
+            return subFolderPath;
         }
 
         private void Awake()
@@ -39,9 +41,10 @@ namespace Coflow.iMotionsPlugin.Vive
 
         public void SetUpPath()
         {
-            fullPath = Application.persistentDataPath + "/" + directoryName + "/" + fileName + "-" + DateTime.Now.ToString("dd-MM-yyyy-HHmm") + fileExtension;
+            subFolderPath = Application.persistentDataPath + "/" + directoryName + "/" + subDirectoryName + "-" + DateTime.Now.ToString("yyyy-MM-dd-HHmm");
+            fullPath = subFolderPath + "/" + fileName + "-" + DateTime.Now.ToString("yyyy-MM-dd-HHmm") + fileExtension;
 
-            Directory.CreateDirectory(Application.persistentDataPath + "/" + directoryName);
+            Directory.CreateDirectory(subFolderPath);
 
             StreamWriter ki;
             if (!Directory.Exists(fullPath))
