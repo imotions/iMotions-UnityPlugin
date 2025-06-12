@@ -694,8 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf577fcd56fe414bb09de7992fb78c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 1920
-  height: 1440
+  resolution: 2
   optionalToggleRecordingInputKey: {fileID: -1647065544743546681, guid: a97a53ab3a5c4034792c44acab76c9bf, type: 3}
   optionalTogglePassthroughInputKey: {fileID: -8209975936296140082, guid: a97a53ab3a5c4034792c44acab76c9bf, type: 3}
   isRecordingDebugVisualCue: {fileID: 0}
