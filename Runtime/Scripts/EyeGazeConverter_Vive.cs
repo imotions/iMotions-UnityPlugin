@@ -3,19 +3,68 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.OpenXR;
 #if VIVE_OPENXR
 using VIVE.OpenXR;
 using VIVE.OpenXR.EyeTracker;
+using VIVE.OpenXR.FacialTracking;
 #endif
 namespace Coflow.iMotionsPlugin.Vive
 {
+
     public class EyeGazeConverter_Vive : EyeGazeConverter
     {
+        protected float pupilPositionX = 0f;
+        protected float pupilPositionY = 0f;
+        protected float eyeOpenness = 0f;
+        protected float eyeSqueeze = 0f;
+        protected float eyeWide = 0f;
+        protected float blinking = 0f;
+
+        public float GetBlinking()
+        {
+            return blinking;
+        }
+        public float GetPupilPositionX()
+        {
+            return pupilPositionX;
+        }
+        public float GetPupilPositionY()
+        {
+            return pupilPositionY;
+        }
+        public float GetEyeOpenness()
+        {
+            return eyeOpenness;
+        }
+
+        public float GetEyeSqueeze()
+        {
+            return eyeSqueeze;
+        }
+
+        public float GetEyeWide()
+        {
+            return eyeWide;
+        }
+
 #if VIVE_OPENXR
+
+        protected float[] eyeExps = new float[(int)XrEyeExpressionHTC.XR_EYE_EXPRESSION_MAX_ENUM_HTC];
+        protected ViveFacialTracking viveFacialTracking;
+
+        protected void Start()
+        {
+            viveFacialTracking = OpenXRSettings.Instance.GetFeature<ViveFacialTracking>();
+        }
+
         protected override void Update()
         {
             XR_HTC_eye_tracker.Interop.GetEyeGazeData(out XrSingleEyeGazeDataHTC[] out_gazes);
             XR_HTC_eye_tracker.Interop.GetEyePupilData(out XrSingleEyePupilDataHTC[] out_pupils);
+            XR_HTC_eye_tracker.Interop.GetEyeGeometricData(out XrSingleEyeGeometricDataHTC[] out_geometric);
+
+            //XR_HTC_facial_tracking.Interop.xrGetFacialExpressionsHTC()
 
             if (out_gazes == null)
             {
@@ -41,6 +90,43 @@ namespace Coflow.iMotionsPlugin.Vive
                 {
                     pupilDiam = 0f;
                 }
+                if(leftPupil.isPositionValid)
+                {
+                    pupilPositionX = leftPupil.pupilPosition.x;
+                    pupilPositionY = leftPupil.pupilPosition.y;
+                }
+                else
+                {
+                    pupilPositionX = 0f;
+                    pupilPositionY = 0f;
+                }
+                XrSingleEyeGeometricDataHTC leftGeometric = out_geometric[(int)XrEyePositionHTC.XR_EYE_POSITION_LEFT_HTC];
+                if (leftGeometric.isValid)
+                {
+                    eyeOpenness = leftGeometric.eyeOpenness;
+                    eyeSqueeze = leftGeometric.eyeSqueeze;
+                    eyeWide = leftGeometric.eyeWide;
+                }
+                else
+                {
+                    eyeOpenness = 0f;
+                    eyeSqueeze = 0f;
+                    eyeWide = 0f;
+                }
+
+                if (viveFacialTracking != null)
+                {
+                    if (viveFacialTracking.GetFacialExpressions(XrFacialTrackingTypeHTC.XR_FACIAL_TRACKING_TYPE_EYE_DEFAULT_HTC, out float[] exps))
+                    {
+                        eyeExps = exps;
+
+                        blinking = eyeExps[(int)XrEyeExpressionHTC.XR_EYE_EXPRESSION_LEFT_BLINK_HTC];
+                    }
+                    else
+                    {
+                        blinking = 0;
+                    }
+                }
             }
             else
             {
@@ -59,6 +145,44 @@ namespace Coflow.iMotionsPlugin.Vive
                 else
                 {
                     pupilDiam = 0f;
+                }
+                if (rightPupil.isPositionValid)
+                {
+                    pupilPositionX = rightPupil.pupilPosition.x;
+                    pupilPositionY = rightPupil.pupilPosition.y;
+                }
+                else
+                {
+                    pupilPositionX = 0f;
+                    pupilPositionY = 0f;
+                }
+
+                XrSingleEyeGeometricDataHTC rightGeometric = out_geometric[(int)XrEyePositionHTC.XR_EYE_POSITION_RIGHT_HTC];
+                if (rightGeometric.isValid)
+                {
+                    eyeOpenness = rightGeometric.eyeOpenness;
+                    eyeSqueeze = rightGeometric.eyeSqueeze;
+                    eyeWide = rightGeometric.eyeWide;
+                }
+                else
+                {
+                    eyeOpenness = 0f;
+                    eyeSqueeze = 0f;
+                    eyeWide = 0f;
+                }
+
+                if (viveFacialTracking != null)
+                {
+                    if (viveFacialTracking.GetFacialExpressions(XrFacialTrackingTypeHTC.XR_FACIAL_TRACKING_TYPE_EYE_DEFAULT_HTC, out float[] exps))
+                    {
+                        eyeExps = exps;
+
+                        blinking = eyeExps[(int)XrEyeExpressionHTC.XR_EYE_EXPRESSION_RIGHT_BLINK_HTC];
+                    }
+                    else
+                    {
+                        blinking = 0;
+                    }
                 }
             }
 
@@ -82,6 +206,8 @@ namespace Coflow.iMotionsPlugin.Vive
 
 
         }
+
+
 #endif
     }
 }

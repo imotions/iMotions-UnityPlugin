@@ -26,6 +26,35 @@ namespace Coflow.iMotionsPlugin.Vive
         string subFolderPath;
         const string fileExtension = ".csv";
 
+        const string timestampColumn = "Timestamp";
+
+        const string gazeLeftXColumn = "GazeLeftX";
+        const string gazeLeftYColumn = "GazeLeftY";
+        const string pupilDialLeftColumn = "PupilDiaLeft";
+
+        const string gazeRightXColumn = "GazeRightX";
+        const string gazeRightYColumn = "GazeRightY";
+        const string pupilDialRightColumn = "PupilDiaRight";
+
+        const string eyeBlinkingLeftColumn = "EyeBlinkLeft";
+        const string eyeBlinkingRightColumn = "EyeBlinkRight";
+
+        //VIVE ONLY
+        const string pupilPositionLeftXColumn = "PupilPosLeftX";
+        const string pupilPositionLeftYColumn = "PupilPosLeftY";
+
+        const string pupilPositionRightXColumn = "PupilPosRightX";
+        const string pupilPositionRightYColumn = "PupilPosRightY";
+
+        const string eyeOpennessLeftColumn = "EyeOpenLeft";
+        const string eyeOpennessRightColumn = "EyeOpenRight";
+
+        const string eyeSqueezeLeftColumn = "EyeSqueezeLeft";
+        const string eyeSqueezeRightColumn = "EyeSqueezeRight";
+
+        const string eyeWideLeftColumn = "EyeWideLeft";
+        const string eyeWideRightColumn = "EyeWideRight";
+
         public string GetSubFolderPath()
         {
             return subFolderPath;
@@ -51,7 +80,12 @@ namespace Coflow.iMotionsPlugin.Vive
             {
                 Debug.Log("#data new file start");
                 ki = new StreamWriter(fullPath);
-                ki.WriteLine("Timestamp,GazeLeftX,GazeLeftY,PupilDiaLeft,GazeRightX,GazeRightY,PupilDiaRight");
+                ki.WriteLine($"{timestampColumn}," +
+                    $"{gazeLeftXColumn},{gazeLeftYColumn},{pupilDialLeftColumn},{pupilPositionLeftXColumn},{pupilPositionLeftYColumn}," +
+                    $"{eyeOpennessLeftColumn},{eyeSqueezeLeftColumn},{eyeWideLeftColumn},{eyeBlinkingLeftColumn}," +
+                    $"{gazeRightXColumn},{gazeRightYColumn},{pupilDialRightColumn},{pupilPositionRightXColumn},{pupilPositionRightYColumn}," +
+                    $"{eyeOpennessRightColumn},{eyeSqueezeRightColumn},{eyeWideRightColumn},{eyeBlinkingRightColumn}");
+
                 ki.Close();
             }
         }
@@ -72,7 +106,12 @@ namespace Coflow.iMotionsPlugin.Vive
             Debug.Log("#data adding data");
             foreach (EyeTrackingData e in _data)
             {
-                ki.WriteLine("" + e.timeStamp + "," + e.gazeLeftX + "," + e.gazeLeftY + "," + e.pupilDiaLeft + "," + e.gazeRightX + "," + e.gazeRightY + "," + e.pupilDiaRight);
+                ki.WriteLine("" + e.timeStamp + "," +
+                    e.gazeLeftX + "," + e.gazeLeftY + "," + e.pupilDiaLeft + "," + e.pupilPositionLeftX + "," + e.pupilPositionLeftY + "," +
+                    e.eyeOpennessLeft + "," + e.eyeSqueezeLeft + "," + e.eyeWideLeft + "," + e.leftEyeBlinking + "," +
+                    e.gazeRightX + "," + e.gazeRightY + "," + e.pupilDiaRight + "," + e.pupilPositionRightX + "," + e.pupilPositionRightY + "," +
+                    e.eyeOpennessRight + "," + e.eyeSqueezeRight + "," + e.eyeWideRight + "," + e.rightEyeBlinking);
+
             }
             ki.Close();
             allEyeTrackingData.RemoveRange(0, _data.Count);
@@ -80,28 +119,23 @@ namespace Coflow.iMotionsPlugin.Vive
 
         public void FinishWriteCSV()
         {
-            Debug.Log("#data End data start writing");
             acceptMoreData = false;
 
             try
             {
-                StreamWriter ki = new StreamWriter(fullPath, append: true);
-                ki.BaseStream.Seek(0, SeekOrigin.End);
-                foreach (EyeTrackingData e in allEyeTrackingData)
+                if (allEyeTrackingData.Count > 0)
                 {
-                    ki.WriteLine("" + e.timeStamp + "," + e.gazeLeftX + "," + e.gazeLeftY + "," + e.pupilDiaLeft + "," + e.gazeRightX + "," + e.gazeRightY + "," + e.pupilDiaRight);
+                    // Use the same format as WriteCSV
+                    WriteCSV(new List<EyeTrackingData>(allEyeTrackingData));
                 }
-                ki.Close();
             }
             catch (Exception e)
             {
                 Debug.Log("Error finishing to write CSV: " + e.Message);
             }
 
-
             allEyeTrackingData.Clear();
             startRecording = false;
-
             onFinishedWritingEyeTrackingDataFile.Raise();
         }
 

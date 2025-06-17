@@ -5,7 +5,8 @@
         "Unity.TextMeshPro",
         "Unity.InputSystem",
         "VIVE.OpenXR",
-        "RenderHeads.AVProMovieCapture.Runtime"
+        "RenderHeads.AVProMovieCapture.Runtime",
+        "Unity.XR.OpenXR"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

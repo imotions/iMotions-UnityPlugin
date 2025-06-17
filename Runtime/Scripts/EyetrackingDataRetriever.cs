@@ -11,8 +11,8 @@ namespace Coflow.iMotionsPlugin.Vive
         [SerializeField] private GameEvent_EyeTrackingData onEyetrackingDataSend;
 
         [Header("Eye Gaze Converters:")]
-        [SerializeField] private EyeGazeConverter leftGazeConverter;
-        [SerializeField] private EyeGazeConverter rightGazeConverter;
+        [SerializeField] private EyeGazeConverter_Vive leftGazeConverter;
+        [SerializeField] private EyeGazeConverter_Vive rightGazeConverter;
 
         [Header("(Optional) Visualizing Values Texts:")]
         [SerializeField] private TMP_Text leftEyeDirectionNormalizedText;
@@ -76,6 +76,24 @@ namespace Coflow.iMotionsPlugin.Vive
                 dataSample.gazeRightX = rightGazeConverter.GetEyeX();
                 dataSample.gazeRightY = rightGazeConverter.GetEyeY();
                 dataSample.pupilDiaRight = rightEyePupilDiameter;
+
+                dataSample.leftEyeBlinking = leftGazeConverter.GetBlinking();
+                dataSample.rightEyeBlinking = rightGazeConverter.GetBlinking();
+
+                dataSample.pupilPositionLeftX = leftGazeConverter.GetPupilPositionX();
+                dataSample.pupilPositionLeftY = leftGazeConverter.GetPupilPositionY();
+
+                dataSample.pupilPositionRightX = rightGazeConverter.GetPupilPositionX();
+                dataSample.pupilPositionRightY = rightGazeConverter.GetPupilPositionY();
+
+                dataSample.eyeOpennessLeft = leftGazeConverter.GetEyeOpenness();
+                dataSample.eyeOpennessRight = rightGazeConverter.GetEyeOpenness();
+
+                dataSample.eyeSqueezeLeft = leftGazeConverter.GetEyeSqueeze();
+                dataSample.eyeSqueezeRight = rightGazeConverter.GetEyeSqueeze();
+
+                dataSample.eyeWideLeft = leftGazeConverter.GetEyeWide();
+                dataSample.eyeWideRight = rightGazeConverter.GetEyeWide();
 
                 if (leftEyeDirectionNormalizedText != null)
                     leftEyeDirectionNormalizedText.text = leftEyeDirectionNormalized.ToString("F2");
