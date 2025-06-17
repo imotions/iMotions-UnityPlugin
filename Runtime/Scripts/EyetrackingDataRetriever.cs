@@ -14,6 +14,8 @@ namespace Coflow.iMotionsPlugin.Meta
         [Header("Eye Gaze Converters:")]
         [SerializeField] private EyeGazeConverter leftGazeConverter;
         [SerializeField] private EyeGazeConverter rightGazeConverter;
+        [Header("Eye Blink Retriever:")]
+        [SerializeField] private EyeBlinkRetriever eyeBlinkRetriever;
 
         [Header("(Optional) Visualizing Values Texts:")]
         [SerializeField] private TMP_Text leftEyeDirectionNormalizedText;
@@ -27,6 +29,9 @@ namespace Coflow.iMotionsPlugin.Meta
 
         float leftEyePupilDiameter;
         float rightEyePupilDiameter;
+
+        float leftEyeBlinking;
+        float rightEyeBlinking;
 
         private bool recording;
         private int startingTime;
@@ -44,6 +49,9 @@ namespace Coflow.iMotionsPlugin.Meta
 
             rightEyeDirectionNormalized.x = rightGazeConverter.GetEyeX();
             rightEyeDirectionNormalized.y = rightGazeConverter.GetEyeY();
+
+            leftEyeBlinking = eyeBlinkRetriever.GetLeftEyeBlinking();
+            rightEyeBlinking = eyeBlinkRetriever.GetRightEyeBlinking();
 
             if (leftEyeDirectionNormalizedText != null)
                 leftEyeDirectionNormalizedText.text = leftEyeDirectionNormalized.ToString("F2");
@@ -70,6 +78,9 @@ namespace Coflow.iMotionsPlugin.Meta
                 leftEyePupilDiameter = leftGazeConverter.GetPupilDiam();
                 rightEyePupilDiameter = rightGazeConverter.GetPupilDiam();
 
+                leftEyeBlinking = eyeBlinkRetriever.GetLeftEyeBlinking();
+                rightEyeBlinking = eyeBlinkRetriever.GetRightEyeBlinking();
+
                 dataSample.gazeLeftX = leftGazeConverter.GetEyeX();
                 dataSample.gazeLeftY = leftGazeConverter.GetEyeY();
                 dataSample.pupilDiaLeft = leftEyePupilDiameter;
@@ -77,6 +88,9 @@ namespace Coflow.iMotionsPlugin.Meta
                 dataSample.gazeRightX = rightGazeConverter.GetEyeX();
                 dataSample.gazeRightY = rightGazeConverter.GetEyeY();
                 dataSample.pupilDiaRight = rightEyePupilDiameter;
+
+                dataSample.leftEyeBlinking = leftEyeBlinking;
+                dataSample.rightEyeBlinking = rightEyeBlinking;
 
                 if (leftEyeDirectionNormalizedText != null)
                     leftEyeDirectionNormalizedText.text = leftEyeDirectionNormalized.ToString("F2");
