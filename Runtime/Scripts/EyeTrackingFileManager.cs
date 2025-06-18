@@ -82,9 +82,9 @@ namespace Coflow.iMotionsPlugin.Vive
                 ki = new StreamWriter(fullPath);
                 ki.WriteLine($"{timestampColumn}," +
                     $"{gazeLeftXColumn},{gazeLeftYColumn},{pupilDialLeftColumn},{pupilPositionLeftXColumn},{pupilPositionLeftYColumn}," +
-                    $"{eyeOpennessLeftColumn},{eyeSqueezeLeftColumn},{eyeWideLeftColumn},{eyeBlinkingLeftColumn}," +
+                    $"{eyeOpennessLeftColumn},{eyeBlinkingLeftColumn}," +
                     $"{gazeRightXColumn},{gazeRightYColumn},{pupilDialRightColumn},{pupilPositionRightXColumn},{pupilPositionRightYColumn}," +
-                    $"{eyeOpennessRightColumn},{eyeSqueezeRightColumn},{eyeWideRightColumn},{eyeBlinkingRightColumn}");
+                    $"{eyeOpennessRightColumn},{eyeBlinkingRightColumn}");
 
                 ki.Close();
             }
@@ -108,9 +108,9 @@ namespace Coflow.iMotionsPlugin.Vive
             {
                 ki.WriteLine("" + e.timeStamp + "," +
                     e.gazeLeftX + "," + e.gazeLeftY + "," + e.pupilDiaLeft + "," + e.pupilPositionLeftX + "," + e.pupilPositionLeftY + "," +
-                    e.eyeOpennessLeft + "," + e.eyeSqueezeLeft + "," + e.eyeWideLeft + "," + e.leftEyeBlinking + "," +
+                    e.eyeOpennessLeft + "," + e.leftEyeBlinking + "," +
                     e.gazeRightX + "," + e.gazeRightY + "," + e.pupilDiaRight + "," + e.pupilPositionRightX + "," + e.pupilPositionRightY + "," +
-                    e.eyeOpennessRight + "," + e.eyeSqueezeRight + "," + e.eyeWideRight + "," + e.rightEyeBlinking);
+                    e.eyeOpennessRight + "," + e.rightEyeBlinking);
 
             }
             ki.Close();
