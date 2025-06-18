@@ -65,7 +65,7 @@ namespace Coflow.iMotionsPlugin.Meta
             {
                 Debug.Log("#data new file start");
                 ki = new StreamWriter(fullPath);
-                ki.WriteLine($"{timestampColumn},{gazeLeftXColumn},{gazeLeftYColumn},{pupilDialLeftColumn},{gazeRightXColumn},{gazeRightYColumn},{pupilDialRightColumn},{eyeBlinkingLeftColumn},{eyeBlinkingRightColumn}");
+                ki.WriteLine($"{timestampColumn},{gazeLeftXColumn},{gazeLeftYColumn},{gazeRightXColumn},{gazeRightYColumn},{eyeBlinkingLeftColumn},{eyeBlinkingRightColumn}");
                 ki.Close();
             }
         }
@@ -86,7 +86,7 @@ namespace Coflow.iMotionsPlugin.Meta
             Debug.Log("#data adding data");
             foreach (EyeTrackingData e in _data)
             {
-                ki.WriteLine("" + e.timeStamp + "," + e.gazeLeftX + "," + e.gazeLeftY + "," + e.pupilDiaLeft + "," + e.gazeRightX + "," + e.gazeRightY + "," + e.pupilDiaRight + "," + e.leftEyeBlinking + "," + e.rightEyeBlinking);
+                ki.WriteLine("" + e.timeStamp + "," + e.gazeLeftX + "," + e.gazeLeftY + "," + e.gazeRightX + "," + e.gazeRightY + "," + e.leftEyeBlinking + "," + e.rightEyeBlinking);
             }
             ki.Close();
             allEyeTrackingData.RemoveRange(0, _data.Count);
