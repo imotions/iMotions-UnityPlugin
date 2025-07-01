@@ -1,6 +1,6 @@
 {
   "name": "com.coflow.imotions-viveopenxr-unityplugin",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "displayName": "iMotions Vive Plugin",
   "description": "This package will help you use vive's eyetracking data and export it in a way imotions software can read.",
   "unity": "2022.3",
@@ -11,7 +11,8 @@
   "dependencies": {
     "com.unity.inputsystem": "1.7.0",
     "com.unity.xr.management": "4.2.1",
-    "com.unity.xr.interaction.toolkit": "2.5.4"
+    "com.unity.xr.interaction.toolkit": "2.5.4",
+    "com.unity.xr.openxr": "1.12.1"
   },
   "samples": [
     {
