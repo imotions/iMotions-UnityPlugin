@@ -1,6 +1,6 @@
 {
   "name": "com.coflow.imotions-metaquestpro-unityplugin",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "displayName": "iMotions Meta Plugin",
   "description": "This package will help you use meta's quest pro eyetracking data and export it in a way imotions software can read.",
   "unity": "2022.3",
