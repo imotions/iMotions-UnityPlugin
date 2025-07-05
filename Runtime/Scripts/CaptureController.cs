@@ -9,19 +9,21 @@ namespace Coflow.iMotionsPlugin.Vive
     {
         CaptureFromCamera captureComp;
 
+        private const string fileName = "EyeTrackingDataFile";
+
+        string timestamp;
+
         private void Awake()
         {
             captureComp = GetComponent<CaptureFromCamera>();
 
             captureComp.SetCamera(Camera.main, false);
-            captureComp.UseContributingCameras = false;
-            captureComp.CameraRenderResolution = CaptureBase.Resolution.Custom;
+            InitCapture();
         }
 
         public void SetupResolution(int width, int height)
         {
-            captureComp.UseContributingCameras = false;
-            captureComp.CameraRenderResolution = CaptureBase.Resolution.Custom;
+            InitCapture();
             captureComp.CameraRenderCustomResolution = new Vector2(width, height);
         }
 
@@ -38,9 +40,20 @@ namespace Coflow.iMotionsPlugin.Vive
             captureComp.StopCapture();
         }
 
-        public void SetOutputPath(string _subFolderPath)
+        public void SetOutputPath(string _subFolderPath, string timestamp)
         {
             captureComp.OutputFolderPath = _subFolderPath;
+            this.timestamp = timestamp;
+            captureComp.FilenamePrefix = fileName + "-" + timestamp;
+        }
+        private void InitCapture()
+        {
+            captureComp.UseContributingCameras = false;
+            captureComp.CameraRenderResolution = CaptureBase.Resolution.Custom;
+
+            captureComp.AppendFilenameTimestamp = false;
+            captureComp.AllowManualFileExtension = false;
+            captureComp.FilenamePrefix = fileName + "-" + timestamp;
         }
     }
 }

@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 3136485849571075000}
   - component: {fileID: 5453451760351827979}
   - component: {fileID: 6464470668292230114}
+  - component: {fileID: 3274127039336193131}
   m_Layer: 0
   m_Name: Unity iMotions Eyetracking Manager
   m_TagString: Untagged
@@ -337,8 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86e7c71c5e248140a046ec66c7708ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 1920
-  height: 1440
+  resolution: 2
   optionalToggleRecordingInputKey: {fileID: -1647065544743546681, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   optionalTogglePassthroughInputKey: {fileID: -8209975936296140082, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   isRecordingDebugVisualCue: {fileID: 0}
@@ -375,6 +375,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onFinishedWritingEyeTrackingDataFile: {fileID: 11400000, guid: 19fc00f609035e34f9eec6773e1cfac3, type: 2}
   onEyetrackingDataSend: {fileID: 5272050275557688852}
+--- !u!114 &3274127039336193131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796515121848146364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0e3ff8d7380cd40a75aee7cfb939b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3926485000824367725
 GameObject:
   m_ObjectHideFlags: 0

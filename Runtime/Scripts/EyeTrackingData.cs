@@ -39,5 +39,8 @@ namespace Coflow.iMotionsPlugin.Vive
         //Eye wide left/right
         public float eyeWideLeft = 0f;
         public float eyeWideRight = 0f;
+
+        //NTP Timestamp (HH:mm:ss.fff zzz)
+        public string absoluteTimestamp;
     }
 }

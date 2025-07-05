@@ -24,6 +24,7 @@ namespace Coflow.iMotionsPlugin.Vive
 
         string fullPath;
         string subFolderPath;
+        string timestamp;
         const string fileExtension = ".csv";
 
         const string timestampColumn = "Timestamp";
@@ -55,6 +56,8 @@ namespace Coflow.iMotionsPlugin.Vive
         const string eyeWideLeftColumn = "EyeWideLeft";
         const string eyeWideRightColumn = "EyeWideRight";
 
+        const string absoluteTimeColumn = "AbsoluteTime";
+
         public string GetSubFolderPath()
         {
             return subFolderPath;
@@ -66,12 +69,17 @@ namespace Coflow.iMotionsPlugin.Vive
             allEyeTrackingData = new List<EyeTrackingData>();
             onEyetrackingDataSend.Response.AddListener(EyetrackerAddData);
         }
+        public string GetRegisteredTimestamp()
+        {
+            return timestamp;
+        }
 
 
         public void SetUpPath()
         {
-            subFolderPath = Application.persistentDataPath + "/" + directoryName + "/" + subDirectoryName + "-" + DateTime.Now.ToString("yyyy-MM-dd-HHmm");
-            fullPath = subFolderPath + "/" + fileName + "-" + DateTime.Now.ToString("yyyy-MM-dd-HHmm") + fileExtension;
+            timestamp = DateTime.Now.ToString("yyyy-MM-dd-HHmm");
+            subFolderPath = Application.persistentDataPath + "/" + directoryName + "/" + subDirectoryName + "-" + timestamp;
+            fullPath = subFolderPath + "/" + fileName + "-" + timestamp + fileExtension;
 
             Directory.CreateDirectory(subFolderPath);
 
@@ -84,7 +92,7 @@ namespace Coflow.iMotionsPlugin.Vive
                     $"{gazeLeftXColumn},{gazeLeftYColumn},{pupilDialLeftColumn},{pupilPositionLeftXColumn},{pupilPositionLeftYColumn}," +
                     $"{eyeOpennessLeftColumn},{eyeBlinkingLeftColumn}," +
                     $"{gazeRightXColumn},{gazeRightYColumn},{pupilDialRightColumn},{pupilPositionRightXColumn},{pupilPositionRightYColumn}," +
-                    $"{eyeOpennessRightColumn},{eyeBlinkingRightColumn}");
+                    $"{eyeOpennessRightColumn},{eyeBlinkingRightColumn},{absoluteTimeColumn}");
 
                 ki.Close();
             }
@@ -110,7 +118,7 @@ namespace Coflow.iMotionsPlugin.Vive
                     e.gazeLeftX + "," + e.gazeLeftY + "," + e.pupilDiaLeft + "," + e.pupilPositionLeftX + "," + e.pupilPositionLeftY + "," +
                     e.eyeOpennessLeft + "," + e.leftEyeBlinking + "," +
                     e.gazeRightX + "," + e.gazeRightY + "," + e.pupilDiaRight + "," + e.pupilPositionRightX + "," + e.pupilPositionRightY + "," +
-                    e.eyeOpennessRight + "," + e.rightEyeBlinking);
+                    e.eyeOpennessRight + "," + e.rightEyeBlinking + "," + e.absoluteTimestamp);
 
             }
             ki.Close();

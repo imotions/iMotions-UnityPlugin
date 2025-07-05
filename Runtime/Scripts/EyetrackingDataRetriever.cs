@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,6 +21,9 @@ namespace Coflow.iMotionsPlugin.Vive
         [SerializeField] private TMP_Text rightEyeDirectionNormalizedText;
         [SerializeField] private TMP_Text rightEyePupilDiameterText;
 
+        NtpTimer absoluteTimer;
+
+        DateTime dt;
 
         Vector3 leftEyeDirectionNormalized = new Vector3();
         Vector3 rightEyeDirectionNormalized = new Vector3();
@@ -29,6 +33,11 @@ namespace Coflow.iMotionsPlugin.Vive
 
         private bool recording;
         private int startingTime;
+
+        private void Awake()
+        {
+            absoluteTimer = GetComponent<NtpTimer>();
+        }
 
         public void SetupResolution(int width, int height)
         {
@@ -59,6 +68,9 @@ namespace Coflow.iMotionsPlugin.Vive
 
                 dataSample.timeStamp = Mathf.RoundToInt(startingTime);
                 startingTime += Mathf.RoundToInt(Time.deltaTime * 1000f);
+
+                dt = absoluteTimer.GetCurrentNtpTime();
+                dataSample.absoluteTimestamp = dt.ToLocalTime().ToString("HH:mm:ss.fff zzz");
 
                 leftEyeDirectionNormalized.x = leftGazeConverter.GetEyeX();
                 leftEyeDirectionNormalized.y = leftGazeConverter.GetEyeY();
@@ -94,6 +106,8 @@ namespace Coflow.iMotionsPlugin.Vive
 
                 dataSample.eyeWideLeft = leftGazeConverter.GetEyeWide();
                 dataSample.eyeWideRight = rightGazeConverter.GetEyeWide();
+
+
 
                 if (leftEyeDirectionNormalizedText != null)
                     leftEyeDirectionNormalizedText.text = leftEyeDirectionNormalized.ToString("F2");
