@@ -24,5 +24,8 @@ namespace Coflow.iMotionsPlugin.Meta
         public float leftEyeBlinking;
         //Right Blinking
         public float rightEyeBlinking;
+
+        //NTP Timestamp (HH:mm:ss.fff zzz)
+        public string absoluteTimestamp;
     }
 }

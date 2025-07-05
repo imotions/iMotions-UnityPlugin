@@ -24,6 +24,7 @@ namespace Coflow.iMotionsPlugin.Meta
 
         string fullPath;
         string subFolderPath;
+        string timestamp;
         const string fileExtension = ".csv";
 
         const string timestampColumn = "Timestamp";
@@ -39,10 +40,16 @@ namespace Coflow.iMotionsPlugin.Meta
         const string eyeBlinkingLeftColumn = "EyeBlinkLeft";
         const string eyeBlinkingRightColumn = "EyeBlinkRight";
 
+        const string absoluteTimeColumn = "AbsoluteTime";
+
 
         public string GetSubFolderPath()
         {
             return subFolderPath;
+        }
+        public string GetRegisteredTimestamp()
+        {
+            return timestamp;
         }
 
         private void Awake()
@@ -55,8 +62,9 @@ namespace Coflow.iMotionsPlugin.Meta
 
         public void SetUpPath()
         {
-            subFolderPath = Application.persistentDataPath + "/" + directoryName + "/" + subDirectoryName + "-" + DateTime.Now.ToString("yyyy-MM-dd-HHmm");
-            fullPath = subFolderPath + "/" + fileName + "-" + DateTime.Now.ToString("yyyy-MM-dd-HHmm") + fileExtension;
+            timestamp = DateTime.Now.ToString("yyyy-MM-dd-HHmm");
+            subFolderPath = Application.persistentDataPath + "/" + directoryName + "/" + subDirectoryName + "-" + timestamp;
+            fullPath = subFolderPath + "/" + fileName + "-" + timestamp + fileExtension;
 
             Directory.CreateDirectory(subFolderPath);
 
@@ -65,7 +73,7 @@ namespace Coflow.iMotionsPlugin.Meta
             {
                 Debug.Log("#data new file start");
                 ki = new StreamWriter(fullPath);
-                ki.WriteLine($"{timestampColumn},{gazeLeftXColumn},{gazeLeftYColumn},{gazeRightXColumn},{gazeRightYColumn},{eyeBlinkingLeftColumn},{eyeBlinkingRightColumn}");
+                ki.WriteLine($"{timestampColumn},{gazeLeftXColumn},{gazeLeftYColumn},{gazeRightXColumn},{gazeRightYColumn},{eyeBlinkingLeftColumn},{eyeBlinkingRightColumn},{absoluteTimeColumn}");
                 ki.Close();
             }
         }
@@ -86,7 +94,7 @@ namespace Coflow.iMotionsPlugin.Meta
             Debug.Log("#data adding data");
             foreach (EyeTrackingData e in _data)
             {
-                ki.WriteLine("" + e.timeStamp + "," + e.gazeLeftX + "," + e.gazeLeftY + "," + e.gazeRightX + "," + e.gazeRightY + "," + e.leftEyeBlinking + "," + e.rightEyeBlinking);
+                ki.WriteLine("" + e.timeStamp + "," + e.gazeLeftX + "," + e.gazeLeftY + "," + e.gazeRightX + "," + e.gazeRightY + "," + e.leftEyeBlinking + "," + e.rightEyeBlinking + "," + e.absoluteTimestamp);
             }
             ki.Close();
             allEyeTrackingData.RemoveRange(0, _data.Count);

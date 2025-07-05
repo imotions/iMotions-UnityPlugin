@@ -100,7 +100,7 @@ namespace Coflow.iMotionsPlugin.Meta
         public void StartRecording()
         {
             eyetrackingManager.SetUpPath();
-            captureController.SetOutputPath(eyetrackingManager.GetSubFolderPath());
+            captureController.SetOutputPath(eyetrackingManager.GetSubFolderPath(), eyetrackingManager.GetRegisteredTimestamp());
             eyetrackingDataRetriever.StartRecording();
 
             Debug.Log("#Start Recording");
