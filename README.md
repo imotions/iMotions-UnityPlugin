@@ -33,3 +33,17 @@ Follow the iMotions-Unity-Plugin_vMeta Doc for step by step process.
 ## 📝 Licensing
 
 This plugin includes third-party components. See [`Third Party Notices.md`](./Third%20Party%20Notices.md) for license details.
+
+
+## Support
+If you contact iMotions support we can help you with:
+- Advice on how the Unity plugin can be useful for your research goals and study design
+- Troubleshooting specific problems with the plugin
+
+Unfortunately we do not have the resources to help you with:
+- Learning programming
+- Setting up your computer for software development
+- Debugging your programs
+- Untangling AI-generated code that does not work
+
+If you need this type of help we recommend finding a colleague or graduate student with some programming knowledge to assist you instead.
