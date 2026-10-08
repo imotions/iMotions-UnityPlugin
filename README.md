@@ -25,8 +25,9 @@ storage/Android/data/<your.app.package.name>/files/imotions/
 - Build settings platform set to Android
 - Inside Unity go to: "Window/Package Manager"
 - Click the "+" sign on top left upper corner
-- Then "Add package from git URL"
-- Paste "https://github.com/imotions/iMotions-UnityPlugin.git#vive"
+- Then "Add package from disk"
+- Navigate into the downloaded iMotions Unity Plugin folder and select the `package.json` file
+- Also import the samples from the plugin tab
 
 Follow the iMotions-Unity-Plugin_vVive Doc for step by step process.
 
