@@ -18,18 +18,20 @@ Your use of this SDK, sample, or tool is subject to HTC VIVE SDK License Agreeme
 
 ---
 
-## 2. AVPro Movie Capture
+## 2. AVPro Movie Capture (Free Trial Version)
 
 **Name**: AVPro Movie Capture (Unity Plugin)  
 **Source**: https://renderheads.com/product/avpro-movie-capture/  
-**License**: Commercial license from RenderHeads Ltd.  
+**License**: Free Trial License  
 **Copyright**
 ```
 © RenderHeads Ltd. All rights reserved.
 
-AVPro Movie Capture is not included in this package. The plugin depends on it
-for in-app recording, and users add it to their project themselves under their
-own license from RenderHeads Ltd.:
+This package uses the Free Trial version of AVPro Movie Capture for Unity,
+included with explicit permission from RenderHeads Ltd. for distribution
+within evaluation and research contexts.
+
+Final users may obtain a full commercial license if required from:
 https://renderheads.com/product/avpro-movie-capture/
 ```
 

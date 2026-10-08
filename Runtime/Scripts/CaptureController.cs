@@ -51,6 +51,7 @@ namespace Coflow.iMotionsPlugin.Vive
             captureComp.UseContributingCameras = false;
             captureComp.CameraRenderResolution = CaptureBase.Resolution.Custom;
 
+            captureComp.AppendFilenameTimestamp = false;
             captureComp.AllowManualFileExtension = false;
             captureComp.FilenamePrefix = fileName + "-" + timestamp;
         }
