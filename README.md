@@ -5,7 +5,7 @@ This Unity plugin simplifies the process of exporting eye-tracking data and in-a
 ## ✅ Features
 
 - ✅ Captures eye-tracking data from VIVE headsets using VIVE OpenXR SDK  
-- ✅ Records in-app footage using AVPro Movie Capture (Free Trial supported)  
+- ✅ Records in-app footage using AVPro Movie Capture (not included; see below)  
 - ✅ Automatically formats and saves data for iMotions ingestion  
 - ✅ Designed for Android builds (e.g. VIVE Focus 3)
 
@@ -29,6 +29,10 @@ storage/Android/data/<your.app.package.name>/files/imotions/
 - Paste "https://github.com/imotions/iMotions-UnityPlugin.git#vive"
 
 Follow the iMotions-Unity-Plugin_vVive Doc for step by step process.
+
+### AVPro Movie Capture
+
+In-app recording uses AVPro Movie Capture from RenderHeads, which is not included in this package. Customers who purchase the iMotions capture module add AVPro Movie Capture to their Unity project themselves: https://renderheads.com/product/avpro-movie-capture/
 
 
 ## 📝 Licensing
