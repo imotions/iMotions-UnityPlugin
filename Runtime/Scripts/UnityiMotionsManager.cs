@@ -27,10 +27,10 @@ namespace Coflow.iMotionsPlugin.Vive
 
         private void Awake()
         {
-            captureController = FindObjectOfType<CaptureController>();
-            eyetrackingManager = FindObjectOfType<EyeTrackingFileManager>();
-            eyetrackingDataRetriever = FindObjectOfType<EyetrackingDataRetriever>();
-            passthroughController = FindObjectOfType<PassthroughController>();
+            captureController = FindAnyObjectByType<CaptureController>();
+            eyetrackingManager = FindAnyObjectByType<EyeTrackingFileManager>();
+            eyetrackingDataRetriever = FindAnyObjectByType<EyetrackingDataRetriever>();
+            passthroughController = FindAnyObjectByType<PassthroughController>();
         }
 
         private void Start()

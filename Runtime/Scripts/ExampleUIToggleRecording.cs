@@ -14,7 +14,7 @@ namespace Coflow.iMotionsPlugin.Vive
         private void Awake()
         {
             toggle = GetComponent<Toggle>();
-            manager = FindObjectOfType<UnityiMotionsManager>();
+            manager = FindAnyObjectByType<UnityiMotionsManager>();
 
             toggle.onValueChanged.AddListener((isOn) =>
             {
