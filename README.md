@@ -21,7 +21,7 @@ storage/Android/data/<your.app.package.name>/files/imotions/
 
 ## 📦 Installation and Usage
 
-- Unity version 2022.3 or higher (fully tested on 2022.3.40f1)
+- Unity 6 or Unity 2022.3 (tested on Unity 6000.6.9f1 and 2022.3.40f1)
 - Build settings platform set to Android
 - Inside Unity go to: "Window/Package Manager"
 - Click the "+" sign on top left upper corner
