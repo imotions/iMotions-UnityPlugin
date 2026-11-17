@@ -1536,7 +1536,11 @@ namespace RenderHeads.Media.AVProMovieCapture
 				CaptureBase[] captures = (CaptureBase[])Resources.FindObjectsOfTypeAll(typeof(CaptureBase));
 #else
 	#if UNITY_2022_2_OR_NEWER || (!UNITY_2022_1_OR_NEWER && UNITY_2021_3_OR_NEWER) || (!UNITY_2021_1_OR_NEWER && UNITY_2020_3_OR_NEWER)
+#if UNITY_6000_6_OR_NEWER
+				CaptureBase[] captures = FindObjectsByType<CaptureBase>();
+#else
 				CaptureBase[] captures = FindObjectsByType<CaptureBase>(FindObjectsSortMode.None);
+#endif
 	#else
 				CaptureBase[] captures = (CaptureBase[])Component.FindObjectsOfType(typeof(CaptureBase));
 	#endif
@@ -2031,7 +2035,7 @@ namespace RenderHeads.Media.AVProMovieCapture
 					{
 						// Try to find an existing matching component globally
 #if UNITY_HAS_FINDFIRSTOBJECTBYTYPE
-						result = FindFirstObjectByType<UnityAudioCapture>();
+						result = FindAnyObjectByType<UnityAudioCapture>();
 #else
 						result = (UnityAudioCapture)GameObject.FindObjectOfType(audioCaptureType);
 #endif
@@ -2049,7 +2053,7 @@ namespace RenderHeads.Media.AVProMovieCapture
 							if (audioListener == null)
 							{
 #if UNITY_HAS_FINDFIRSTOBJECTBYTYPE
-								audioListener = FindFirstObjectByType<AudioListener>();
+								audioListener = FindAnyObjectByType<AudioListener>();
 #else
 								audioListener = GameObject.FindObjectOfType<AudioListener>();
 #endif
@@ -2722,7 +2726,7 @@ namespace RenderHeads.Media.AVProMovieCapture
 		{
 			// make sure if their are any GUI compoents in the scene that they are using this (the currently running item as their Movie Capture)
 #if UNITY_HAS_FINDFIRSTOBJECTBYTYPE
-            var testingGUI = FindFirstObjectByType<CaptureGUI>();
+            var testingGUI = FindAnyObjectByType<CaptureGUI>();
 #else
 			var testingGUI = (CaptureGUI)GameObject.FindObjectOfType(typeof(CaptureGUI));
 #endif

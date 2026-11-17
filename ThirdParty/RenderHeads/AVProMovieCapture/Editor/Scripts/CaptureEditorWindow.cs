@@ -502,7 +502,11 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 			if (!string.IsNullOrEmpty(_cameraName))
 			{
 #if UNITY_HAS_FINDFIRSTOBJECTBYTYPE
+#if UNITY_6000_6_OR_NEWER
+				Camera[] cameras = FindObjectsByType<Camera>();
+#else
 				Camera[] cameras = FindObjectsByType<Camera>(FindObjectsSortMode.None);
+#endif
 #else
 				Camera[] cameras = (Camera[])FindObjectsOfType(typeof(Camera));
 #endif
@@ -901,7 +905,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 				case SourceType.Screen:
 					// need to check to see if their any of these in the scene and then just set to that if there is
 #if UNITY_HAS_FINDFIRSTOBJECTBYTYPE
-					var preExistingCapScreen = FindFirstObjectByType<CaptureFromScreen>();
+					var preExistingCapScreen = FindAnyObjectByType<CaptureFromScreen>();
 #else
 					var preExistingCapScreen = (CaptureFromScreen)GameObject.FindObjectOfType(typeof(CaptureFromScreen));
 #endif
@@ -916,7 +920,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					break;
 				case SourceType.Camera:
 #if UNITY_HAS_FINDFIRSTOBJECTBYTYPE
-                    var preExistingCapCamera = FindFirstObjectByType<CaptureFromCamera>();
+                    var preExistingCapCamera = FindAnyObjectByType<CaptureFromCamera>();
 #else
 					var preExistingCapCamera = (CaptureFromCamera)GameObject.FindObjectOfType(typeof(CaptureFromCamera));
 #endif
@@ -943,7 +947,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					break;
 				case SourceType.Camera360:
 #if UNITY_HAS_FINDFIRSTOBJECTBYTYPE
-                    var preExistingCapCamera360 = FindFirstObjectByType<CaptureFromCamera360>();
+                    var preExistingCapCamera360 = FindAnyObjectByType<CaptureFromCamera360>();
 #else
 					var preExistingCapCamera360 = (CaptureFromCamera360)GameObject.FindObjectOfType(typeof(CaptureFromCamera360));
 #endif
@@ -978,7 +982,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
 					break;
 				case SourceType.Camera360ODS:
 #if UNITY_HAS_FINDFIRSTOBJECTBYTYPE
-                    var preExistingCapCamera360DS = FindFirstObjectByType<CaptureFromCamera360ODS>();
+                    var preExistingCapCamera360DS = FindAnyObjectByType<CaptureFromCamera360ODS>();
 #else
 					var preExistingCapCamera360DS = (CaptureFromCamera360ODS)GameObject.FindObjectOfType(typeof(CaptureFromCamera360ODS));
 #endif
@@ -1019,7 +1023,7 @@ namespace RenderHeads.Media.AVProMovieCapture.Editor
             // need to check if their is a GUI component in the scene then if their is set disable it as this component, handles the UI
 			// so no need for an in scene one
 #if UNITY_HAS_FINDFIRSTOBJECTBYTYPE
-            var testingGUI = FindFirstObjectByType<CaptureGUI>();
+            var testingGUI = FindAnyObjectByType<CaptureGUI>();
 #else
 			var testingGUI = (CaptureGUI)GameObject.FindObjectOfType(typeof(CaptureGUI));
 #endif
