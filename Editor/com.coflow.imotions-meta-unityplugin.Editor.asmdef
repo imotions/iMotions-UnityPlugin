@@ -2,6 +2,7 @@
     "name": "com.coflow.imotions-meta-unityplugin.Editor",
     "rootNamespace": "Coflow.iMotionsPlugin.Meta",
     "references": [
+        "Unity.TextMeshPro",
         "RenderHeads.AVProMovieCapture.Runtime"
     ],
     "includePlatforms": [
