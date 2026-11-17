@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEditor.Compilation;
 
 namespace Coflow.iMotionsPlugin.Vive
@@ -13,11 +14,13 @@ namespace Coflow.iMotionsPlugin.Vive
             bool found = assemblies.Any(a => a.name.Contains("VIVE.OpenXR")); // Or a known class name
             if (found)
             {
-                string symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+                // NamedBuildTarget replaces the BuildTargetGroup overloads, which are obsolete in Unity 6.
+                var target = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+                string symbols = PlayerSettings.GetScriptingDefineSymbols(target);
                 if (!symbols.Contains("VIVE_OPENXR"))
                 {
                     symbols += ";VIVE_OPENXR";
-                    PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, symbols);
+                    PlayerSettings.SetScriptingDefineSymbols(target, symbols);
                 }
             }
         }
