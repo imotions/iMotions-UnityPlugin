@@ -1,7 +1,9 @@
 {
     "name": "com.coflow.imotions-viveopenxr-unityplugin.Editor",
     "rootNamespace": "Coflow.iMotionsPlugin.Vive",
-    "references": [],
+    "references": [
+        "Unity.TextMeshPro"
+    ],
     "includePlatforms": [
         "Editor"
     ],
