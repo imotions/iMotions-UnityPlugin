@@ -12,7 +12,7 @@ namespace Coflow.iMotionsPlugin.Meta
         {
             base.Awake();
 
-            faceExpressions = FindObjectOfType<OVRFaceExpressions>();
+            faceExpressions = FindAnyObjectByType<OVRFaceExpressions>();
         }
 
         protected override void Update()
